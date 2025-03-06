@@ -158,13 +158,13 @@
       "languageVersion": "3.3"
     },
     {
-      "name": "arkonne_oil_project",
+      "name": "oil_frontend_mobile",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "3.7"
     }
   ],
-  "generated": "2025-03-06T12:36:30.974443Z",
+  "generated": "2025-03-06T13:23:28.579773Z",
   "generator": "pub",
   "generatorVersion": "3.7.0-323.2.beta",
   "flutterRoot": "file:///Users/mohamadmortada/Developer/SDKs/flutter",

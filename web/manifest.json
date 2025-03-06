@@ -1,6 +1,6 @@
 {
-    "name": "arkonne_oil_project",
-    "short_name": "arkonne_oil_project",
+    "name": "oil_frontend_mobile",
+    "short_name": "oil_frontend_mobile",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
