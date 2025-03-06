@@ -98,10 +98,22 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "nested",
+      "rootUri": "file:///Users/mohamadmortada/.pub-cache/hosted/pub.dev/nested-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "path",
       "rootUri": "file:///Users/mohamadmortada/.pub-cache/hosted/pub.dev/path-1.9.1",
       "packageUri": "lib/",
       "languageVersion": "3.4"
+    },
+    {
+      "name": "provider",
+      "rootUri": "file:///Users/mohamadmortada/.pub-cache/hosted/pub.dev/provider-6.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "sky_engine",
@@ -164,7 +176,7 @@
       "languageVersion": "3.7"
     }
   ],
-  "generated": "2025-03-06T13:23:28.579773Z",
+  "generated": "2025-03-06T18:28:15.549550Z",
   "generator": "pub",
   "generatorVersion": "3.7.0-323.2.beta",
   "flutterRoot": "file:///Users/mohamadmortada/Developer/SDKs/flutter",
