@@ -7,9 +7,11 @@ environment:
   sdk: ^3.7.0-323.2.beta
 
 dependencies:
+  dio: ^5.8.0+1
   flutter:
     sdk: flutter
   provider: ^6.1.2
+  shared_preferences: ^2.5.2
 
 dev_dependencies:
   flutter_test:
