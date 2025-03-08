@@ -1,9 +1,11 @@
+import 'package:flutter/material.dart';
+import 'package:oil_frontend_mobile/core/services/auth.dart';
+import 'package:oil_frontend_mobile/utils/validations.dart';
+import 'package:provider/provider.dart';
 import 'package:oil_frontend_mobile/providers/navigation_provider.dart';
 import 'package:oil_frontend_mobile/providers/register_provider.dart';
 import 'package:oil_frontend_mobile/screens/confirmation_page.dart';
 import 'package:oil_frontend_mobile/screens/permissions_page.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:oil_frontend_mobile/widgets/toggle_phone_email.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/custom_textfield.dart';
@@ -12,6 +14,7 @@ import '../widgets/gradient_bar.dart';
 import '../widgets/terms_and_conditions.dart';
 import '../widgets/continue_with.dart';
 import '../widgets/apple_google_facebook.dart';
+
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
 
@@ -19,6 +22,53 @@ class RegisterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final registerProvider = Provider.of<RegisterProvider>(context);
     final navigationProvider = Provider.of<NavigationProvider>(context);
+    final authService = AuthService();
+
+    void handleRegister() async {
+      if (registerProvider.isPhoneSelected) {
+        if (!Validations.isValidPhoneNumber(registerProvider.phoneNumber)) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("Please enter a valid phone number.")),
+          );
+          return;
+        }
+      } else {
+        if (!Validations.isValidEmail(registerProvider.email)) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("Please enter a valid email address.")),
+          );
+          return;
+        }
+      }
+      if (!registerProvider.isChecked) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              "Please accept Terms and Conditions and Privacy Policy.",
+            ),
+          ),
+        );
+        return;
+      }
+
+      bool success = await authService.register(
+        email: registerProvider.isPhoneSelected ? null : registerProvider.email,
+        phone:
+            registerProvider.isPhoneSelected
+                ? registerProvider.phoneNumber
+                : null,
+        firstName: registerProvider.firstName,
+        lastName: registerProvider.lastName,
+      );
+
+      if (success) {
+        navigationProvider.navigateTo(context, ConfirmationPage());
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Registration failed. Please try again.")),
+        );
+      }
+    }
 
     return Scaffold(
       body: Stack(
@@ -82,8 +132,17 @@ class RegisterPage extends StatelessWidget {
                 ),
 
                 const TermsAndConditions(),
-                CustomButton(text: 'Sign Up',onTap: ()=>{navigationProvider.navigateTo(context, ConfirmationPage())}),
-                TextButtonGreen(text: 'Continue as a guest', onTap: () => {navigationProvider.navigateTo(context, PermissionsPage())},),
+                CustomButton(text: 'Sign Up', onTap: handleRegister),
+                TextButtonGreen(
+                  text: 'Continue as a guest',
+                  onTap:
+                      () => {
+                        navigationProvider.navigateTo(
+                          context,
+                          PermissionsPage(),
+                        ),
+                      },
+                ),
                 const ContinueWith(),
                 const AppleGoogleFacebook(),
                 const SizedBox(height: 20),

@@ -11,6 +11,7 @@ import 'package:oil_frontend_mobile/widgets/text_button.dart';
 import 'package:oil_frontend_mobile/widgets/toggle_phone_email.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:oil_frontend_mobile/utils/validations.dart'; 
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -19,6 +20,26 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final loginProvider = Provider.of<LoginProvider>(context);
     final navigationProvider = Provider.of<NavigationProvider>(context);
+
+    void handleLogin() {
+      if (loginProvider.isPhoneSelected) {
+        if (!Validations.isValidPhoneNumber(loginProvider.phoneNumber)) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("Please enter a valid phone number.")),
+          );
+          return;
+        }
+      } else {
+        if (!Validations.isValidEmail(loginProvider.email)) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("Please enter a valid email address.")),
+          );
+          return;
+        }
+      }
+      navigationProvider.navigateTo(context, ConfirmationPage());
+    }
+
     return Scaffold(
       body: Stack(
         children: [
@@ -63,7 +84,7 @@ class LoginPage extends StatelessWidget {
                 ),
 
                 const TermsAndConditions(),
-                CustomButton(text: 'Sign In', onTap: ()=>{navigationProvider.navigateTo(context, ConfirmationPage())}),
+                CustomButton(text: 'Sign In', onTap: handleLogin),
                 const TextButtonGreen(text: 'Continue as a guest'),
                 const ContinueWith(),
                 const AppleGoogleFacebook(),
