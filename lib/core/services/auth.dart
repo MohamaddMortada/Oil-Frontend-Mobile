@@ -1,8 +1,11 @@
 import 'package:dio/dio.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService {
   final Dio _dio = Dio(BaseOptions(baseUrl: 'http://127.0.0.1:8000/api'));
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   Future<bool> register({String? email, String? phone, String firstName = "", String lastName = ""}) async {
     try {
@@ -60,5 +63,16 @@ class AuthService {
   Future<bool> isAuthenticated() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getString('token') != null;
+  }
+
+   registerWithGoogle() async {
+    final GoogleSignInAccount? gUser = await GoogleSignIn().signIn();
+    final GoogleSignInAuthentication gAuth = await gUser!.authentication;
+    final credential = GoogleAuthProvider.credential(
+      accessToken: gAuth.accessToken,
+      idToken: gAuth.idToken
+      );
+    return await _firebaseAuth.signInWithCredential(credential); 
+ 
   }
 }
