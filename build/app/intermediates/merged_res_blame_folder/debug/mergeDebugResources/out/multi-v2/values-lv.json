@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.oil_frontend_mobile.app-mergeDebugResources-46:/values-lv/values-lv.xml",
+            "outputFile": "com.example.oil_frontend_mobile.app-mergeDebugResources-52:/values-lv/values-lv.xml",
             "map": [
                 {
                     "source": "/Users/mohamadmortada/.gradle/caches/8.10.2/transforms/845d779a6f9703b804f5e43452bcc2e5/transformed/appcompat-1.1.0/res/values-lv/values-lv.xml",

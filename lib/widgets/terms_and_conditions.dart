@@ -14,65 +14,76 @@ class TermsAndConditions extends StatelessWidget {
     final navigationProvider = Provider.of<NavigationProvider>(context);
     final registerProvider = Provider.of<RegisterProvider>(context);
 
-    return Row(
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             GestureDetector(
               onTap: () {
                 registerProvider.setTermsAndConditions();
               },
               child: Container(
-                width: 30,
-                height: 30,
+                width: constraints.maxWidth > 600 ? 40 : 30,
+                height: constraints.maxWidth > 600 ? 40 : 30,
                 decoration: BoxDecoration(
-                  color:
-                      registerProvider.isChecked
-                          ? const Color.fromARGB(255, 51, 134, 54)
-                          : Colors.transparent,
+                  color: registerProvider.isChecked
+                      ? const Color.fromARGB(255, 51, 134, 54)
+                      : Colors.transparent,
                   border: Border.all(
                     color: const Color.fromARGB(46, 0, 0, 0),
                     width: 2,
                   ),
-
                   borderRadius: BorderRadius.circular(8),
                 ),
-                child:
-                    registerProvider.isChecked
-                        ? const Icon(Icons.check, color: Colors.white, size: 20)
-                        : null,
+                child: registerProvider.isChecked
+                    ? Icon(Icons.check, color: Colors.white, size: constraints.maxWidth > 600 ? 25 : 20)
+                    : null,
               ),
             ),
-
-            SizedBox(width: 10),
-            RichText(
-              textAlign: TextAlign.start,
-              text: TextSpan(
-                style: TextStyle(fontSize: 12, color: Colors.black),
-                children: [
-                  TextSpan(text: "I've read and agree with the "),
-                  TextSpan(
-                    text: "Terms and Conditions",
-                    style: TextStyle(
-                      color: Color.fromARGB(255, 51, 134, 54),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14,
-                    ),
-                    recognizer: TapGestureRecognizer()..onTap = () {navigationProvider.navigateTo(context, TermsAndConditionsPage());},
+            const SizedBox(width: 10),
+            Expanded(
+              child: RichText(
+                textAlign: TextAlign.start,
+                text: TextSpan(
+                  style: TextStyle(
+                    fontSize: constraints.maxWidth > 600 ? 16 : 12,
+                    color: Colors.black,
                   ),
-                  TextSpan(text: " and \nthe "),
-                  TextSpan(
-                    text: "Privacy Policy.",
-                    style: TextStyle(
-                      color: Color.fromARGB(255, 51, 134, 54),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14,
+                  children: [
+                    const TextSpan(text: "I've read and agree with the "),
+                    TextSpan(
+                      text: "Terms and Conditions ",
+                      style: TextStyle(
+                        color: const Color.fromARGB(255, 51, 134, 54),
+                        fontWeight: FontWeight.bold,
+                        fontSize: constraints.maxWidth > 600 ? 18 : 14,
+                      ),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          navigationProvider.navigateTo(context, const TermsAndConditionsPage());
+                        },
                     ),
-                    recognizer: TapGestureRecognizer()..onTap = () {navigationProvider.navigateTo(context, PrivacyPolicyPage());},
-                  ),
-                ],
+                    const TextSpan(text: "and the "),
+                    TextSpan(
+                      text: "Privacy Policy.",
+                      style: TextStyle(
+                        color: const Color.fromARGB(255, 51, 134, 54),
+                        fontWeight: FontWeight.bold,
+                        fontSize: constraints.maxWidth > 600 ? 18 : 14,
+                      ),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          navigationProvider.navigateTo(context, const PrivacyPolicyPage());
+                        },
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
         );
-      }
+      },
+    );
   }
-
+}

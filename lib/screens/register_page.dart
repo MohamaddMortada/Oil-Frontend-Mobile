@@ -1,6 +1,9 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:oil_frontend_mobile/core/services/auth.dart';
+import 'package:oil_frontend_mobile/screens/login_page.dart';
 import 'package:oil_frontend_mobile/utils/validations.dart';
+import 'package:oil_frontend_mobile/widgets/icon_button.dart';
 import 'package:provider/provider.dart';
 import 'package:oil_frontend_mobile/providers/navigation_provider.dart';
 import 'package:oil_frontend_mobile/providers/register_provider.dart';
@@ -13,7 +16,6 @@ import '../widgets/text_button.dart';
 import '../widgets/gradient_bar.dart';
 import '../widgets/terms_and_conditions.dart';
 import '../widgets/continue_with.dart';
-import '../widgets/apple_google_facebook.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
@@ -28,21 +30,21 @@ class RegisterPage extends StatelessWidget {
       if (registerProvider.isPhoneSelected) {
         if (!Validations.isValidPhoneNumber(registerProvider.phoneNumber)) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text("Please enter a valid phone number.")),
+            const SnackBar(content: Text("Please enter a valid phone number.")),
           );
           return;
         }
       } else {
         if (!Validations.isValidEmail(registerProvider.email)) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text("Please enter a valid email address.")),
+            const SnackBar(content: Text("Please enter a valid email address.")),
           );
           return;
         }
       }
       if (!registerProvider.isChecked) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+          const SnackBar(
             content: Text(
               "Please accept Terms and Conditions and Privacy Policy.",
             ),
@@ -54,18 +56,16 @@ class RegisterPage extends StatelessWidget {
       bool success = await authService.register(
         email: registerProvider.isPhoneSelected ? null : registerProvider.email,
         phone:
-            registerProvider.isPhoneSelected
-                ? registerProvider.phoneNumber
-                : null,
+            registerProvider.isPhoneSelected ? registerProvider.phoneNumber : null,
         firstName: registerProvider.firstName,
         lastName: registerProvider.lastName,
       );
 
       if (success) {
-        navigationProvider.navigateTo(context, ConfirmationPage());
+        navigationProvider.navigateTo(context, const ConfirmationPage());
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Registration failed. Please try again.")),
+          const SnackBar(content: Text("Registration failed. Please try again.")),
         );
       }
     }
@@ -73,89 +73,134 @@ class RegisterPage extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          GradientBar(),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(20, 35, 20, 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Image.asset('assets/logo outline 1.png'),
-                const Text(
-                  'Sign Up',
-                  style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+          const GradientBar(),
+          LayoutBuilder(
+            builder: (context, constraints) {
+              return SingleChildScrollView(
+                padding: EdgeInsets.symmetric(
+                  horizontal: constraints.maxWidth > 600 ? 80 : 20,
+                  vertical: 35,
                 ),
-
-                TogglePhoneEmail(
-                  isPhoneSelected: registerProvider.isPhoneSelected,
-                  onToggle: (index) {
-                    registerProvider.toggleSelection(index);
-                  },
-                ),
-
-                Row(
-                  children: [
-                    Expanded(
-                      child: CustomTextfield(
-                        label: 'First Name',
-                        onChanged: registerProvider.setFirstName,
-                      ),
-                    ),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: CustomTextfield(
-                        label: 'Last Name',
-                        onChanged: registerProvider.setLastName,
-                      ),
-                    ),
-                  ],
-                ),
-
-                SizedBox(
-                  height: 50,
-                  child: PageView(
-                    controller: registerProvider.pageController,
-                    onPageChanged: (index) {
-                      registerProvider.toggleSelection(index);
-                    },
-                    children: [
-                      CustomTextfield(
-                        label: 'Phone Number',
-                        onChanged: registerProvider.setPhoneNumber,
-                      ),
-                      CustomTextfield(
-                        label: 'Email',
-                        onChanged: registerProvider.setEmail,
-                      ),
-                    ],
-                  ),
-                ),
-
-                const TermsAndConditions(),
-                CustomButton(text: 'Sign Up', onTap: handleRegister),
-                TextButtonGreen(
-                  text: 'Continue as a guest',
-                  onTap:
-                      () => {
-                        navigationProvider.navigateTo(
-                          context,
-                          PermissionsPage(),
-                        ),
-                      },
-                ),
-                const ContinueWith(),
-                const AppleGoogleFacebook(),
-                const SizedBox(height: 20),
-
-                Row(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text('Already have an account? '),
-                    TextButtonGreen(text: 'Sign In'),
+                  children: [
+                    Image.asset(
+                      'assets/logo outline 1.png',
+                      width: constraints.maxWidth > 600 ? 200 : 150,
+                    ),
+                    const SizedBox(height: 20),
+                    const Text(
+                      'Sign Up',
+                      style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(height: 20),
+                    TogglePhoneEmail(
+                      isPhoneSelected: registerProvider.isPhoneSelected,
+                      onToggle: (index) {
+                        registerProvider.toggleSelection(index);
+                      },
+                    ),
+                    const SizedBox(height: 20),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: CustomTextfield(
+                            label: 'First Name',
+                            onChanged: registerProvider.setFirstName,
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: CustomTextfield(
+                            label: 'Last Name',
+                            onChanged: registerProvider.setLastName,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                    SizedBox(
+                      height: 50,
+                      child: PageView(
+                        controller: registerProvider.pageController,
+                        onPageChanged: (index) {
+                          registerProvider.toggleSelection(index);
+                        },
+                        children: [
+                          CustomTextfield(
+                            label: 'Phone Number',
+                            onChanged: registerProvider.setPhoneNumber,
+                          ),
+                          CustomTextfield(
+                            label: 'Email',
+                            onChanged: registerProvider.setEmail,
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    const TermsAndConditions(),
+                    const SizedBox(height: 20),
+                    CustomButton(
+                      text: 'Sign Up',
+                      onTap: handleRegister,
+                    ),
+                    const SizedBox(height: 10),
+                    TextButtonGreen(
+                      text: 'Continue as a guest',
+                      onTap: () => navigationProvider.navigateTo(
+                        context,
+                        const PermissionsPage(),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    const ContinueWith(),
+                    const SizedBox(height: 10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        if (Platform.isIOS) 
+                          GestureDetector(
+                            onTap: () {},
+                            child: IconImageButton(url: 'assets/Group.png'),
+                          ),
+                        if (Platform.isIOS) const SizedBox(width: 15),
+                        GestureDetector(
+                          onTap: () {
+                            authService.registerWithGoogle();
+                          },
+                          child: IconImageButton(url: 'assets/google.png'),
+                        ),
+                        const SizedBox(width: 15),
+                        GestureDetector(
+                          onTap: () {
+                            authService.signInWithFacebook();
+                          },
+                          child: IconImageButton(
+                            url: 'assets/2021_Facebook_icon 1.png',
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text('Already have an account? '),
+                        TextButtonGreen(
+                          text: 'Sign In',
+                          onTap: () => navigationProvider.navigateTo(
+                            context,
+                            const LoginPage(),
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
-              ],
-            ),
+              );
+            },
           ),
         ],
       ),

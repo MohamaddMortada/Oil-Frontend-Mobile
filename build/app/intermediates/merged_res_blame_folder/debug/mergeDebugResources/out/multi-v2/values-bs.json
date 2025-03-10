@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.oil_frontend_mobile.app-mergeDebugResources-46:/values-bs/values-bs.xml",
+            "outputFile": "com.example.oil_frontend_mobile.app-mergeDebugResources-52:/values-bs/values-bs.xml",
             "map": [
                 {
                     "source": "/Users/mohamadmortada/.gradle/caches/8.10.2/transforms/bca4f27036848d324a997969c094e057/transformed/browser-1.4.0/res/values-bs/values-bs.xml",

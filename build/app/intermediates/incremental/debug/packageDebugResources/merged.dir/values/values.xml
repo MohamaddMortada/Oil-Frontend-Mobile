@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="facebook_app_id">1022207669829762</string>
+    <string name="facebook_client_token">f273812c6f5720902248927112b572b3</string>
+    <string name="gcm_defaultSenderId" translatable="false">138482350390</string>
+    <string name="google_api_key" translatable="false">AIzaSyC410XB0tcjkrId8rDOidTThpv3DOpA-pY</string>
+    <string name="google_app_id" translatable="false">1:138482350390:android:63d6ea87d2ab9d11c7db97</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyC410XB0tcjkrId8rDOidTThpv3DOpA-pY</string>
+    <string name="google_storage_bucket" translatable="false">oil-frontend-mobile.firebasestorage.app</string>
+    <string name="project_id" translatable="false">oil-frontend-mobile</string>
     <style name="LaunchTheme" parent="@android:style/Theme.Light.NoTitleBar">
         
         <item name="android:windowBackground">@drawable/launch_background</item>

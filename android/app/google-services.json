@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "138482350390",
+    "project_id": "oil-frontend-mobile",
+    "storage_bucket": "oil-frontend-mobile.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:138482350390:android:63d6ea87d2ab9d11c7db97",
+        "android_client_info": {
+          "package_name": "com.example.oil_frontend_mobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC410XB0tcjkrId8rDOidTThpv3DOpA-pY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

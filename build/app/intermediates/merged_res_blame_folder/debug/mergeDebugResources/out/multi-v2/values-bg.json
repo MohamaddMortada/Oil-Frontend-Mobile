@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.oil_frontend_mobile.app-mergeDebugResources-46:/values-bg/values-bg.xml",
+            "outputFile": "com.example.oil_frontend_mobile.app-mergeDebugResources-52:/values-bg/values-bg.xml",
             "map": [
                 {
                     "source": "/Users/mohamadmortada/.gradle/caches/8.10.2/transforms/d5a90d880711c0baff6cb8ee6cb72f44/transformed/jetified-play-services-base-18.0.1/res/values-bg/values.xml",
