@@ -18,13 +18,13 @@ class OTPInputField extends StatelessWidget {
         keyboardType: TextInputType.number,
         textAlign: TextAlign.center,
         maxLength: 1,
-        cursorColor: const Color.fromARGB(255, 51, 134, 54),
+        cursorColor: Theme.of(context).primaryColor,
         style: const TextStyle(fontSize: 24),
         decoration: InputDecoration(
           counterText: "",
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: const BorderSide(color: Color.fromARGB(255, 51, 134, 54), width: 2),
+            borderSide: BorderSide(color: Theme.of(context).primaryColor, width: 2),
           ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),

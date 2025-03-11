@@ -29,7 +29,7 @@ class TogglePhoneEmail extends StatelessWidget {
                 height: 31,
                 padding: const EdgeInsets.all(5),
                 decoration: BoxDecoration(
-                  color: isPhoneSelected ? Color.fromARGB(255, 51, 134, 54) : Colors.transparent,
+                  color: isPhoneSelected ? Theme.of(context).primaryColor : Colors.transparent,
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Text(
@@ -50,7 +50,7 @@ class TogglePhoneEmail extends StatelessWidget {
                 height: 31,
                 padding: const EdgeInsets.all(5),
                 decoration: BoxDecoration(
-                  color: isPhoneSelected ? Colors.transparent : Color.fromARGB(255, 51, 134, 54),
+                  color: isPhoneSelected ? Colors.transparent : Theme.of(context).primaryColor,
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Text(

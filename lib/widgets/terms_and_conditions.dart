@@ -28,7 +28,7 @@ class TermsAndConditions extends StatelessWidget {
                 height: constraints.maxWidth > 600 ? 40 : 30,
                 decoration: BoxDecoration(
                   color: registerProvider.isChecked
-                      ? const Color.fromARGB(255, 51, 134, 54)
+                      ? Theme.of(context).primaryColor
                       : Colors.transparent,
                   border: Border.all(
                     color: const Color.fromARGB(46, 0, 0, 0),
@@ -55,7 +55,7 @@ class TermsAndConditions extends StatelessWidget {
                     TextSpan(
                       text: "Terms and Conditions ",
                       style: TextStyle(
-                        color: const Color.fromARGB(255, 51, 134, 54),
+                        color: Theme.of(context).primaryColor,
                         fontWeight: FontWeight.bold,
                         fontSize: constraints.maxWidth > 600 ? 18 : 14,
                       ),
@@ -68,7 +68,7 @@ class TermsAndConditions extends StatelessWidget {
                     TextSpan(
                       text: "Privacy Policy.",
                       style: TextStyle(
-                        color: const Color.fromARGB(255, 51, 134, 54),
+                        color: Theme.of(context).primaryColor,
                         fontWeight: FontWeight.bold,
                         fontSize: constraints.maxWidth > 600 ? 18 : 14,
                       ),

@@ -15,7 +15,7 @@ class TextButtonGreen extends StatelessWidget {
         style: TextStyle(
           fontSize: 14,
           fontWeight: FontWeight.bold,
-          color: Color.fromARGB(255, 51, 134, 54),
+          color: Theme.of(context).primaryColor,
         ),
       ),
     );

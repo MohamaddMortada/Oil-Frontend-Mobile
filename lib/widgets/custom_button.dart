@@ -17,7 +17,7 @@ class CustomButton extends StatelessWidget {
         padding: EdgeInsets.fromLTRB(16,13,16,12),
         //margin: EdgeInsets.all(20),
         decoration: BoxDecoration(
-          color: Color.fromARGB(255, 51, 134, 54),
+          color: Theme.of(context).primaryColor,
           borderRadius: BorderRadius.circular(12),
         ),
         child:Text(

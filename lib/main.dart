@@ -14,12 +14,13 @@ void main() async {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => RegisterProvider()), 
-        ChangeNotifierProvider(create: (context) => LoginProvider()), 
+        ChangeNotifierProvider(create: (context) => RegisterProvider()),
+        ChangeNotifierProvider(create: (context) => LoginProvider()),
         ChangeNotifierProvider(create: (context) => OTPProvider()),
         ChangeNotifierProvider(create: (context) => NavigationProvider()),
       ],
-      child: const MainApp(),)
+      child: const MainApp(),
+    ),
   );
 }
 
@@ -28,7 +29,8 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      theme: ThemeData(primaryColor: Color(0xFF089247)),
       debugShowCheckedModeBanner: false,
       home: LoginPage(),
     );

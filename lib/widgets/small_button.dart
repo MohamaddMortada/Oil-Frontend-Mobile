@@ -20,7 +20,7 @@ class SmallButton extends StatelessWidget {
         width: double.infinity,
         padding: const EdgeInsets.fromLTRB(12, 8, 12, 8),
         decoration: BoxDecoration(
-          color: isSelected ? const Color.fromARGB(255, 51, 134, 54) : Colors.grey[300],
+          color: isSelected ? Theme.of(context).primaryColor : Colors.grey[300],
           borderRadius: BorderRadius.circular(12),
         ),
         child: Text(

@@ -6,32 +6,32 @@ class GradientBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ShaderMask(
-          shaderCallback: (Rect bounds) {
-            return LinearGradient(
-              begin: Alignment.bottomCenter,
-              end: Alignment.topCenter,
-              colors: [Colors.white, Colors.transparent],
-              stops: [0.1, 0.4],
-            ).createShader(bounds);
-          },
-          blendMode: BlendMode.dstOut,
-          child: Container(
-            height: MediaQuery.of(context).size.height * 0.12,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.topRight,
-                colors: [
-                  const Color.fromARGB(255, 206, 255, 236).withOpacity(0.8),
-                  const Color.fromARGB(255, 186, 253, 159).withOpacity(0.8),
-                  const Color.fromARGB(255, 183, 255, 155).withOpacity(0.8),
-                  const Color.fromARGB(255, 185, 248, 160).withOpacity(0.8),
-                  const Color.fromARGB(255, 230, 255, 220).withOpacity(0.8),
-                ],
-                stops: [0.0, 0.4, 0.5, 0.7, 0.9],
-              ),
-            ),
+      shaderCallback: (Rect bounds) {
+        return LinearGradient(
+          begin: Alignment.bottomCenter,
+          end: Alignment.topCenter,
+          colors: [Colors.white, Colors.transparent],
+          stops: [0, 0.8],
+        ).createShader(bounds);
+      },
+      blendMode: BlendMode.dstOut,
+      child: Container(
+        height: MediaQuery.of(context).size.height * 0.12,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.topRight,
+            colors: [
+              Color(0xFFB1DCC4),
+              Color(0xFF8AC987),
+              Color(0xFF8FCB89),
+              Color(0xFFB8DEAC),
+              Color(0xFFBDE1C4),
+            ],
+            stops: [0.0, 0.3, 0.6, 0.8, 1],
           ),
-        );
+        ),
+      ),
+    );
   }
 }
