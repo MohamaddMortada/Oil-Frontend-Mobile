@@ -28,6 +28,6 @@ buildscript {
     }
 
     dependencies {
-        classpath("com.google.gms:google-services:4.4.2")  // Use double quotes here
+        classpath("com.google.gms:google-services:4.4.2")  
     }
 }

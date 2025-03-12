@@ -20,7 +20,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.oil_frontend_mobile"
-        minSdk = 23  // Make sure this is set to at least 23 for Firebase
+        minSdk = 23 
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
