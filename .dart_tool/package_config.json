@@ -392,6 +392,24 @@
       "languageVersion": "3.3"
     },
     {
+      "name": "sign_in_with_apple",
+      "rootUri": "file:///Users/mohamadmortada/.pub-cache/hosted/pub.dev/sign_in_with_apple-6.1.4",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
+      "name": "sign_in_with_apple_platform_interface",
+      "rootUri": "file:///Users/mohamadmortada/.pub-cache/hosted/pub.dev/sign_in_with_apple_platform_interface-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
+      "name": "sign_in_with_apple_web",
+      "rootUri": "file:///Users/mohamadmortada/.pub-cache/hosted/pub.dev/sign_in_with_apple_web-2.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
       "name": "sky_engine",
       "rootUri": "file:///Users/mohamadmortada/Developer/SDKs/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
@@ -476,7 +494,7 @@
       "languageVersion": "3.7"
     }
   ],
-  "generated": "2025-03-11T18:39:24.351939Z",
+  "generated": "2025-03-12T10:01:28.012455Z",
   "generator": "pub",
   "generatorVersion": "3.7.0-323.2.beta",
   "flutterRoot": "file:///Users/mohamadmortada/Developer/SDKs/flutter",

@@ -119,7 +119,7 @@ class LoginPage extends StatelessWidget {
                         children: [
                         if (Platform.isIOS) 
                           GestureDetector(
-                              onTap: () {},
+                              onTap: () {authService.signInWithApple();},
                               child: IconImageButton(url: 'assets/Group.png'),
                             ),
                         if (Platform.isIOS) 
