@@ -6,10 +6,10 @@ class HeaderThree extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(padding: EdgeInsets.fromLTRB(0, 20, 0, 10),
+    return Padding(padding: EdgeInsets.fromLTRB(0, 0,0,0),
     child:
     Text(text, 
-    textAlign: TextAlign.center,
+    //textAlign: TextAlign.center,
     style: TextStyle(
       fontWeight: FontWeight.w400,
       fontSize: 16,
